@@ -5,8 +5,6 @@
  */
 package hash_tools;
 
-import gsi.CampoRegistro;
-
 /**
  *
  * @author rpayan
@@ -50,7 +48,34 @@ public class TablaHash {
         return this.tabla[hash(clave)];
     }
     
-    
+    public void delete(String campo)
+    {
+        CampoRegistro   c = search(campo),
+                        ca = null;
+        while (c!=null) 
+        {
+            if (campo.equals(c.getCampo()))
+            {
+                if (ca==null)
+                {
+                    this.tabla[hash(campo)]=c;
+                    ca=c;
+                }
+                else
+                {
+                    ca.setSig(c.getSig());
+                }
+                c=c.getSig();
+            }
+            else
+            {
+                ca=c;
+                c=c.getSig();
+            }
+        }
+        if (campo.equals(this.tabla[hash(campo)].getCampo())) 
+            this.tabla[hash(campo)]=null;
+    }
     
     private int hash(CampoRegistro cr)
     {

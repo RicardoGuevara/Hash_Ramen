@@ -5,7 +5,6 @@
  */
 package hash_tools;
 
-import gsi.CampoRegistro;
 import hash_tools.TablaHash;
 
 /**
@@ -56,20 +55,19 @@ public class HashRamen {
     {
         System.out.println("Busqueda: "+campo);
         /*
-        for (TablaHash tablaHash : ramen) 
+        for (TablaHash tablaHash : ramen)
         {
-            System.out.println(tablaHash.exactSearchResults(campo));
+        System.out.println(tablaHash.exactSearchResults(campo));
         }
         */
-        
-        for (TablaHash tablaHash : ramen) 
+        for (TablaHash tablaHash : ramen)
         {
             for (CampoRegistro exactSearchResult : tablaHash.exactSearchResults(campo))
             {
                 System.out.println(exactSearchResult);
             }
         }
-        
+        System.out.println("______busqueda terminada_______");
     }
     
     public void specificFieldSearch(String campo, int index) 
@@ -80,6 +78,24 @@ public class HashRamen {
         {
             System.out.println(exactSearchResult);
         }
+        System.out.println("______busqueda terminada_______");
+    }
+    
+    public void generalFieldDelete(String campo) 
+    {
+        System.out.println("Borrado de "+campo+" en cualquier campo");
+        
+        for (TablaHash tablaHash : ramen) 
+        {
+            tablaHash.delete(campo);
+        }
+        
+    }
+    
+    public void specificFieldDelete(String campo, int index) 
+    {
+        System.out.println("Borrado de "+campo+" en el campo "+index);
+        ramen[index].delete(campo);
     }
     
     public CampoRegistro separar(String reg)

@@ -41,6 +41,9 @@ public class hash_ramen_rgp {
         ramen.print();
         ramen.generalFieldSearch("bbb");
         ramen.specificFieldSearch("bbb", 1);
+        ramen.generalFieldDelete("bbb");
+        ramen.generalFieldSearch("bbb");
+        ramen.generalFieldSearch("fff");
     }
     
     
