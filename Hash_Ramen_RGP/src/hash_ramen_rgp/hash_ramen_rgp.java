@@ -44,6 +44,9 @@ public class hash_ramen_rgp {
         ramen.generalFieldDelete("bbb");
         ramen.generalFieldSearch("bbb");
         ramen.generalFieldSearch("fff");
+        
+        System.out.println("\nverificacion de eliminaciones:");
+        ramen.print();
     }
     
     public static HashRamen ramen = new HashRamen(3,10,";");
