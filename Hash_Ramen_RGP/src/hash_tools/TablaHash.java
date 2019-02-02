@@ -50,6 +50,8 @@ public class TablaHash {
         return this.tabla[hash(clave)];
     }
     
+    
+    
     private int hash(CampoRegistro cr)
     {
         return hash(cr.getCampo());

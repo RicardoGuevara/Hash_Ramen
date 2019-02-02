@@ -40,6 +40,7 @@ public class hash_ramen_rgp {
         ramen.insert("ggg;hhh;bbb");
         ramen.print();
         ramen.generalFieldSearch("bbb");
+        ramen.specificFieldSearch("bbb", 1);
     }
     
     

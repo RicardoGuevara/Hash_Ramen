@@ -72,6 +72,16 @@ public class HashRamen {
         
     }
     
+    public void specificFieldSearch(String campo, int index) 
+    {
+        System.out.println("Busqueda de: "+campo+" en el campo: "+(index+1));
+        
+        for (CampoRegistro exactSearchResult : ramen[index].exactSearchResults(campo)) 
+        {
+            System.out.println(exactSearchResult);
+        }
+    }
+    
     public CampoRegistro separar(String reg)
     {
         CampoRegistro   cpa = null, //campo de registro actual
