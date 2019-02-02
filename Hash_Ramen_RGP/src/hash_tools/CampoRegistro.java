@@ -14,7 +14,8 @@ public class CampoRegistro {
     private String          campo;  //valor/texto del campo
     private CampoRegistro   der,    //siguiente campo
                             izq,    //campo anterior
-                            down;    //siguiente en cadena de hash
+                            down,   //siguiente en cadena de hash
+                            up;     //anterior en cadena de hash
 
     public CampoRegistro(String campo) {
         this.campo = campo;
@@ -35,12 +36,15 @@ public class CampoRegistro {
     
     public void addBlok(CampoRegistro cp)
     {
-        if (this.down==null) 
+        if (this.down==null)
+        { 
             this.down = cp;
+            cp.up=this;
+        }
         else
             this.down.addBlok(cp);
     }
-
+    
     public void addChain(CampoRegistro cp)
     {
         if (this.der==null)
@@ -50,6 +54,27 @@ public class CampoRegistro {
         }
         else
             this.der.addChain(cp);
+    }
+    
+    public void delBlock() 
+    {
+        getStartPoint().delBlock(0);
+    }
+    
+    private void delBlock(int i)
+    {
+        if (this.up==null) 
+            hash_ramen_rgp.hash_ramen_rgp.ramen.delOne(this.campo, i);
+        else
+        {
+            this.up.down=this.down;
+            if (this.down!=null) 
+                this.down.up=this.up;
+        }
+        
+        if (this.der!=null) {
+            this.der.delBlock(++i);
+        }
     }
     
     public void printBlok()
@@ -110,6 +135,14 @@ public class CampoRegistro {
 
     public void setSig(CampoRegistro sig) {
         this.down = sig;
+    }
+
+    public CampoRegistro getUp() {
+        return up;
+    }
+
+    public void setUp(CampoRegistro up) {
+        this.up = up;
     }
 
     

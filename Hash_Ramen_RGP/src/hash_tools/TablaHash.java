@@ -11,7 +11,7 @@ package hash_tools;
  */
 public class TablaHash {
     
-    private CampoRegistro tabla[];
+    public CampoRegistro tabla[];
 
     public TablaHash(int capacidad_tabla) {
         tabla = new CampoRegistro[capacidad_tabla];
@@ -64,6 +64,12 @@ public class TablaHash {
                 else
                 {
                     ca.setSig(c.getSig());
+                    if (ca.getSig()!=null)
+                    {
+                        ca.getSig().setUp(ca);
+                        
+                    }
+                    c.delBlock();
                 }
                 c=c.getSig();
             }
@@ -77,12 +83,12 @@ public class TablaHash {
             this.tabla[hash(campo)]=null;
     }
     
-    private int hash(CampoRegistro cr)
+    public int hash(CampoRegistro cr)
     {
         return hash(cr.getCampo());
     }
     
-    private int hash(String key)
+    public int hash(String key)
     {
         int sum=0;
         for (char let : key.toCharArray()) {

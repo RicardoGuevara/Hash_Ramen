@@ -31,7 +31,7 @@ public class hash_ramen_rgp {
         System.out.println(th.search("aaa;bbb;ccc"));
         */
         
-        HashRamen ramen = new HashRamen(3,10,";");
+        
         ramen.insert("aaa;bbb;ccc");
         ramen.insert("ddd;bbb;fff");
         ramen.insert("ggg;hhh;fff");
@@ -46,6 +46,6 @@ public class hash_ramen_rgp {
         ramen.generalFieldSearch("fff");
     }
     
-    
+    public static HashRamen ramen = new HashRamen(3,10,";");
     
 }

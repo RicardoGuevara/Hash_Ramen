@@ -98,6 +98,18 @@ public class HashRamen {
         ramen[index].delete(campo);
     }
     
+    public void delOne(String campo, int tab_index)
+    {
+        TablaHash t = ramen[tab_index];
+        int i = t.hash(campo);
+        t.tabla[i] = t.tabla[i].getSig();
+        if (t.tabla[i]!=null) {
+            t.tabla[i].getUp().setSig(null);
+            t.tabla[i].setUp(null);
+        }
+        
+    }
+    
     public CampoRegistro separar(String reg)
     {
         CampoRegistro   cpa = null, //campo de registro actual
