@@ -23,8 +23,14 @@ public class CampoRegistro {
     @Override
     public String toString()
     {
-        printRegistChain();
-        return "";
+        String r="--> ";
+        CampoRegistro actual = getStartPoint();
+        while (actual!=null) 
+        {
+            r+=" "+actual.campo;
+            actual=actual.der;
+        }
+        return r;
     }
     
     public void addBlok(CampoRegistro cp)

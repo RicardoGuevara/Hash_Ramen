@@ -35,7 +35,11 @@ public class hash_ramen_rgp {
         ramen.insert("aaa;bbb;ccc");
         ramen.insert("ddd;bbb;fff");
         ramen.insert("ggg;hhh;fff");
+        ramen.insert("bbb;ste;otro");
+        ramen.insert("ddd;bbb;fff");
+        ramen.insert("ggg;hhh;bbb");
         ramen.print();
+        ramen.generalFieldSearch("bbb");
     }
     
     

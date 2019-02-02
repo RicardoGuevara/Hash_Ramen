@@ -52,6 +52,26 @@ public class HashRamen {
         }
     }
     
+    public void generalFieldSearch(String campo) 
+    {
+        System.out.println("Busqueda: "+campo);
+        /*
+        for (TablaHash tablaHash : ramen) 
+        {
+            System.out.println(tablaHash.exactSearchResults(campo));
+        }
+        */
+        
+        for (TablaHash tablaHash : ramen) 
+        {
+            for (CampoRegistro exactSearchResult : tablaHash.exactSearchResults(campo))
+            {
+                System.out.println(exactSearchResult);
+            }
+        }
+        
+    }
+    
     public CampoRegistro separar(String reg)
     {
         CampoRegistro   cpa = null, //campo de registro actual

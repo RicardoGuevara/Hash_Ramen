@@ -28,6 +28,23 @@ public class TablaHash {
             this.tabla[hash].addBlok(registro);
     }
     
+    public java.util.ArrayList<CampoRegistro> exactSearchResults(String campo)
+    {
+        java.util.ArrayList<CampoRegistro> resultados = new java.util.ArrayList<>();
+        CampoRegistro actual = search(campo);
+        
+        while (actual!=null) 
+        {
+            if (campo.equals(actual.getCampo())) 
+            {
+                resultados.add(actual.getStartPoint());
+            }
+            actual = actual.getSig();
+        }
+        
+        return resultados;
+    }
+    
     public CampoRegistro search(String clave)
     {
         return this.tabla[hash(clave)];
