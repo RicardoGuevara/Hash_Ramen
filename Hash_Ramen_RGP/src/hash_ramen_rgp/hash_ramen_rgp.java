@@ -5,6 +5,8 @@
  */
 package hash_ramen_rgp;
 
+import hash_tools.HashRamen;
+
 /**
  *
  * @author rpayan
