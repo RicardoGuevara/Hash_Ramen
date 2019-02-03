@@ -31,13 +31,14 @@ public class hash_ramen_rgp {
         System.out.println(th.search("aaa;bbb;ccc"));
         */
         
-        
+        HashRamen ramen = new HashRamen(3,10,";");
         ramen.insert("aaa;bbb;ccc");
         ramen.insert("ddd;bbb;fff");
         ramen.insert("ggg;hhh;fff");
         ramen.insert("bbb;ste;otro");
         ramen.insert("ddd;bbb;fff");
         ramen.insert("ggg;hhh;bbb");
+        
         ramen.print();
         ramen.generalFieldSearch("bbb");
         ramen.specificFieldSearch("bbb", 1);
@@ -48,7 +49,5 @@ public class hash_ramen_rgp {
         System.out.println("\nverificacion de eliminaciones:");
         ramen.print();
     }
-    
-    public static HashRamen ramen = new HashRamen(3,10,";");
     
 }

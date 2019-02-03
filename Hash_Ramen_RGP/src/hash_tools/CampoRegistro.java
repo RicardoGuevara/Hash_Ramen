@@ -56,15 +56,15 @@ public class CampoRegistro {
             this.der.addChain(cp);
     }
     
-    public void delBlock() 
+    public void delBlock(HashRamen ramen) 
     {
-        getStartPoint().delBlock(0);
+        getStartPoint().delBlock(0,ramen);
     }
     
-    private void delBlock(int i)
+    private void delBlock(int i, HashRamen ramen)
     {
         if (this.up==null) 
-            hash_ramen_rgp.hash_ramen_rgp.ramen.delOne(this.campo, i);
+            ramen.delOne(this.campo, i);
         else
         {
             this.up.down=this.down;
@@ -73,7 +73,7 @@ public class CampoRegistro {
         }
         
         if (this.der!=null) {
-            this.der.delBlock(++i);
+            this.der.delBlock(++i,ramen);
         }
     }
     

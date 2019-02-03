@@ -12,9 +12,11 @@ package hash_tools;
 public class TablaHash {
     
     public CampoRegistro tabla[];
+    public HashRamen ramen;
 
-    public TablaHash(int capacidad_tabla) {
+    public TablaHash(int capacidad_tabla,HashRamen ramen) {
         tabla = new CampoRegistro[capacidad_tabla];
+        this.ramen = ramen;
     }
     
     public void add(CampoRegistro registro)
@@ -58,7 +60,7 @@ public class TablaHash {
             resp=c.getSig();
             if (campo.equals(c.getCampo())) 
             {
-                c.delBlock();
+                c.delBlock(this.ramen);
             }
             c=resp;
         }

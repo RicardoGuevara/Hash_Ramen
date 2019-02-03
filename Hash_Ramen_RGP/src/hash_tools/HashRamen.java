@@ -25,7 +25,7 @@ public class HashRamen {
         this.separador = separador_registros;
         ramen = new TablaHash[densidad];    //numero de tablas
         for (int i = 0; i < densidad; i++) {
-            ramen[i] = new TablaHash(capacidad);
+            ramen[i] = new TablaHash(capacidad,this);
         }
     }
     
