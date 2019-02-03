@@ -48,39 +48,20 @@ public class TablaHash {
         return this.tabla[hash(clave)];
     }
     
+    
     public void delete(String campo)
     {
         CampoRegistro   c = search(campo),
-                        ca = null;
+                        resp;
         while (c!=null) 
         {
-            if (campo.equals(c.getCampo()))
+            resp=c.getSig();
+            if (campo.equals(c.getCampo())) 
             {
-                if (ca==null)
-                {
-                    this.tabla[hash(campo)]=c;
-                    ca=c;
-                }
-                else
-                {
-                    ca.setSig(c.getSig());
-                    if (ca.getSig()!=null)
-                    {
-                        ca.getSig().setUp(ca);
-                        
-                    }
-                    c.delBlock();
-                }
-                c=c.getSig();
+                c.delBlock();
             }
-            else
-            {
-                ca=c;
-                c=c.getSig();
-            }
+            c=resp;
         }
-        if (campo.equals(this.tabla[hash(campo)].getCampo())) 
-            this.tabla[hash(campo)]=null;
     }
     
     public int hash(CampoRegistro cr)

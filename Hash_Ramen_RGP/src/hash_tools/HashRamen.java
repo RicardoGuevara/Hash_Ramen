@@ -102,7 +102,8 @@ public class HashRamen {
     {
         TablaHash t = ramen[tab_index];
         int i = t.hash(campo);
-        t.tabla[i] = t.tabla[i].getSig();
+        if (t.tabla[i]!=null)
+            t.tabla[i] = t.tabla[i].getSig();
         if (t.tabla[i]!=null) {
             t.tabla[i].getUp().setSig(null);
             t.tabla[i].setUp(null);
