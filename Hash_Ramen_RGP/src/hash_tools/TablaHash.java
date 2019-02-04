@@ -77,7 +77,9 @@ public class TablaHash {
         for (char let : key.toCharArray()) {
             sum += (int)let;
         }
-        return (sum<tabla.length)?tabla.length % sum:sum%tabla.length;
+        //System.out.println("TEST --------"+sum%tabla.length+" "+tabla.length+" "+sum);
+        //return (sum<tabla.length)?tabla.length % sum:sum%tabla.length;
+        return sum%tabla.length;
     }
     
     public void printTable()
