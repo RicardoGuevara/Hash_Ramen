@@ -18,7 +18,7 @@ public class hash_ramen_rgp {
      */
     public static void main(String[] args) {
         //test_table_structure();
-        test_ramen_structure();
+        //test_ramen_structure();
         
     }
     
