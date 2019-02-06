@@ -12,9 +12,12 @@ package gsi;
 public class FileGenerator {
  
     int     n_registro, //numero de registros
-            n_campos;   //numero de campos por registro
+            n_campos,   //numero de campos por registro
+            longs[];    //longitud de cada campo
+    
+    boolean[] isnum;    //valor de campo numerico o alfabetico 
             
-    java.util.ArrayList<Registro> registros;
+    java.util.ArrayList<Campo> registros;
 
     public FileGenerator(int n_registro, int n_campos) {
         this.n_registro = n_registro;
@@ -22,39 +25,44 @@ public class FileGenerator {
         registros = new java.util.ArrayList<>();
     }
     
-    public void ask()
+    public void generate()
     {
         
     }
     
-    class Registro
+    private void generate_reg()
     {
-        int     l_campo;    //numero de campos por registro
+        
+    }
+    
+    private void ask()
+    {
+        
+    }
+    
+    class Campo
+    {
+        int     l_campo;    //longitud de campo
         boolean numerico;   //campo numerico - alfabetico
         java.util.ArrayList<String> campos = new java.util.ArrayList<>();
 
-        public Registro(int l_campo, boolean numerico) {
+        public Campo(int l_campo, boolean numerico) {
             this.l_campo = l_campo;
             this.numerico = numerico;
         }
         
-        public String generate()
-        {
-            return "pendiente";
-        }
-        
-        private String generateCampo()
+        public String generateCampo()
         {
             //48-57 numericos ASCII
             //97-122 alfabeticos ASCII
             
             int     min = numerico? 48:97,  //minimo de generado random
-                    max = numerico? 97:122; //maximo de generado random
+                    max = numerico? 57:122; //maximo de generado random
             
             char[]  resultado = new char[l_campo];
             
-            for (char c : resultado) {
-                c = (char)Math.floor(Math.random()*(max-min+1)+min); 
+            for (int i = 0; i < l_campo; i++) {
+                resultado[i] = (char)Math.floor(Math.random()*(max-min+1)+min); 
             }
             
             return new String(resultado);

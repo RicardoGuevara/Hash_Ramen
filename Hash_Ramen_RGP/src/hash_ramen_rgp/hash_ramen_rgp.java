@@ -5,6 +5,7 @@
  */
 package hash_ramen_rgp;
 
+import gsi.FileGenerator;
 import hash_tools.HashRamen;
 
 /**
@@ -19,6 +20,11 @@ public class hash_ramen_rgp {
     public static void main(String[] args) {
         //test_table_structure();
         //test_ramen_structure();
+        test_file_generator();
+        /*
+        for (int i = 0; i < 300; i++) {
+        System.out.println((char)i+" "+i);
+        }*/
         
     }
     
@@ -57,5 +63,11 @@ public class hash_ramen_rgp {
         th.printTable();
         System.out.println("search:\n");
         System.out.println(th.search("aaa;bbb;ccc"));
+    }
+    
+    public static void test_file_generator()
+    {
+        FileGenerator fg = new FileGenerator(1,3);
+        fg.ask();
     }
 }
