@@ -5,6 +5,7 @@
  */
 package gsi;
 
+
 /**
  *
  * @author Labcienciascomputacion
@@ -16,36 +17,59 @@ public class FileGenerator {
             longs[];    //longitud de cada campo
     
     boolean[] isnum;    //valor de campo numerico o alfabetico 
-            
+     
+    java.util.Scanner lectura = new java.util.Scanner(System.in);
+    
     java.util.ArrayList<Campo> registros;
 
     public FileGenerator(int n_registro, int n_campos) {
         this.n_registro = n_registro;
         this.n_campos = n_campos;
         registros = new java.util.ArrayList<>();
+        longs = new int[n_campos];
+        isnum = new boolean[n_campos];
     }
     
     public void generate()
     {
-        
+        ask();
+        try {
+            java.io.BufferedWriter bw = new java.io.BufferedWriter(new java.io.FileWriter("data_base.txt"));
+            for (int i = 0; i < n_registro; i++) {
+                bw.write(generate_reg());
+                bw.newLine();
+            }
+            bw.close();
+        } catch (java.io.IOException e){
+            System.out.println("error en la escritura del archivo");
+            
+        }
     }
     
-    private void generate_reg()
+    private String generate_reg()
     {
-        
+        String registro ="";
+        for (int i = 0; i < n_campos; i++) 
+            registro += new Campo(longs[i],isnum[i]).generateCampo()+";";
+        return registro.substring(0, registro.length()-1);
     }
     
     private void ask()
     {
-        
+        for (int i = 0; i < n_campos; i++) 
+        {
+            System.out.println("Longitud del campo: "+(i+1));
+            longs[i] = lectura.nextInt();
+            System.out.println("digite 1 si el campo es numerico, cualquier otro numero si no");
+            isnum[i] = lectura.nextInt() == 1;
+        }
     }
     
     class Campo
     {
         int     l_campo;    //longitud de campo
         boolean numerico;   //campo numerico - alfabetico
-        java.util.ArrayList<String> campos = new java.util.ArrayList<>();
-
+        
         public Campo(int l_campo, boolean numerico) {
             this.l_campo = l_campo;
             this.numerico = numerico;
