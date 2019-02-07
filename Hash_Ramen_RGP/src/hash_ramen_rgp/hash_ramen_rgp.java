@@ -21,12 +21,93 @@ public class hash_ramen_rgp {
      */
     public static void main(String[] args) {
         //test_table_structure();
-        test_ramen_structure();
+        //test_ramen_structure();
         //test_file_generator();
+        
         /*
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 300; i++)
         System.out.println((char)i+" "+i);
-        }*/
+        */
+        
+        time_compare_bench();
+    }
+    
+    public static void time_compare_bench()
+    {
+        java.util.Scanner lectura = new java.util.Scanner(System.in);
+        
+        int     nr,         //número de registros
+                nc,         //número de campos
+                ant_time,   //tiempo anterior
+                n;          //temporal versátil
+                
+        HashRamen ramen;    //estructura de carga
+        
+        System.out.println("Digite el número de registros del archivo");
+        nr = lectura.nextInt();
+        System.out.println("Digite el número de campos para cada registro");
+        nc = lectura.nextInt();
+        ramen = new HashRamen(nc,100,";");  //asignar dimensiones a la estructura
+        
+        System.out.println("\nGenerando archivo...______________________________");
+        ant_time = (int)System.nanoTime();
+        new FileGenerator(nr,nc).generate();    //genera el archivo de nr registros x nc campos
+        System.out.println("Tiempo de generado: "+(System.nanoTime()-ant_time));
+        
+        System.out.println("\ncargando a la estructura..._______________________");
+        ant_time = (int)System.nanoTime();
+        loadFile(ramen,"data_base.txt");
+        System.out.println("Tiempo de carga: "+(System.nanoTime()-ant_time));
+        
+        System.out.println("\nBusqueda en el campo n..._________________________");
+        ant_time = (int)System.nanoTime();
+        System.out.println("Digite el número de campo de busqueda (empiezan por 1)");
+        n = lectura.nextInt()-1;
+        System.out.println("digite el valor que desea buscar:");
+        ramen.specificFieldSearch(lectura.next(), n);
+        System.out.println("Tiempo de busqueda específica: "+(System.nanoTime()-ant_time));
+        
+        System.out.println("\nBusqueda en el campo clave..._____________________");
+        ant_time = (int)System.nanoTime();
+        System.out.println("digite el valor que desea buscar:");
+        ramen.specificFieldSearch(lectura.next(), 0);
+        System.out.println("Tiempo de busqueda en campo clave: "+(System.nanoTime()-ant_time));
+        
+        System.out.println("\nBusqueda en todos los campos...___________________");
+        ant_time = (int)System.nanoTime();
+        System.out.println("digite el valor que desea buscar:");
+        ramen.generalFieldSearch(lectura.next());
+        System.out.println("Tiempo de busqueda general: "+(System.nanoTime()-ant_time));
+        
+        System.out.println("\nmínimo..._________________________________________");
+        ant_time = (int)System.nanoTime();
+        System.out.println("Digite el número de campo de busqueda de mínimo (empiezan por 1)");
+        n = lectura.nextInt()-1;
+        System.out.println("el mínimo es: "+ramen.min(n));
+        System.out.println("Tiempo de valor mínimo: "+(System.nanoTime()-ant_time));
+        
+        System.out.println("\nmáximo..._________________________________________");
+        ant_time = (int)System.nanoTime();
+        System.out.println("Digite el número de campo de busqueda de máximo (empiezan por 1)");
+        n = lectura.nextInt()-1;
+        System.out.println("el máximo es: "+ramen.max(n));
+        System.out.println("Tiempo de valor máximo: "+(System.nanoTime()-ant_time));
+        
+        System.out.println("\npromedio..._______________________________________");
+        ant_time = (int)System.nanoTime();
+        System.out.println("Digite el número de campo a promediar (empiezan por 1)");
+        n = lectura.nextInt()-1;
+        System.out.println("el promedio es: "+ramen.promedio(n));
+        System.out.println("Tiempo de promediado: "+(System.nanoTime()-ant_time));
+        
+        System.out.println("\nmoda...___________________________________________");
+        ant_time = (int)System.nanoTime();
+        System.out.println("Digite el número de campo de busqueda de moda (empiezan por 1)");
+        n = lectura.nextInt()-1;
+        n = ramen.moda(n);
+        System.out.println((n==-1)? "no hay un valor moda ya que ningún campo se repite":"la moda es: "+n);
+        System.out.println("Tiempo de moda: "+(System.nanoTime()-ant_time));
+        
         
     }
     
