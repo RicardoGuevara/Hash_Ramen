@@ -6,6 +6,7 @@
 package hash_tools;
 
 import hash_tools.TablaHash;
+import java.util.Collections;
 
 /**
  *
@@ -109,6 +110,68 @@ public class HashRamen {
             t.tabla[i].setUp(null);
         }
         
+    }
+    
+    public int min(int campo)
+    {
+        java.util.ArrayList<String> lista_campo = listaOrdenCampo(campo);
+        return Integer.parseInt(lista_campo.get(0));
+    }
+    
+    public int max(int campo)
+    {
+        java.util.ArrayList<String> lista_campo = listaOrdenCampo(campo);
+        return Integer.parseInt(lista_campo.get(lista_campo.size()-1));
+    }
+    
+    public int promedio(int campo)
+    {
+        int sum = 0;
+        java.util.ArrayList<String> lista_campo = listaOrdenCampo(campo);
+        for (String string : lista_campo) {
+            sum+= Integer.parseInt(string);
+        }
+        return sum/lista_campo.size();
+    }
+    
+    public int moda(int campo) throws NumberFormatException
+    {
+        java.util.ArrayList<String> lista_campo = listaOrdenCampo(campo);
+        java.util.ArrayList<String> remobibles = new java.util.ArrayList<>();
+        int     ant_long = lista_campo.size(),
+                dif = -1,temp;
+        
+        String res = "-1";
+        
+        while (lista_campo.size()>1) 
+        {
+            remobibles.add(lista_campo.get(0));
+            lista_campo.removeAll(remobibles);
+            temp = ant_long-lista_campo.size();
+            if (temp>dif && temp!=1) 
+            {
+                res=remobibles.get(0);
+            }
+            remobibles = new java.util.ArrayList<>();
+            ant_long = lista_campo.size();
+        }
+        return Integer.parseInt(res);
+    }
+    
+    public java.util.ArrayList<String> listaOrdenCampo(int index)
+    {
+        CampoRegistro cr;
+        java.util.ArrayList<String> resultados = new java.util.ArrayList<>();
+        for (CampoRegistro campo : ramen[index].tabla) {
+            cr = campo;
+            while (cr!=null) 
+            {
+                resultados.add(cr.getCampo());
+                cr = cr.getSig();
+            }
+        }
+        Collections.sort(resultados);
+        return resultados;
     }
     
     public CampoRegistro separar(String reg)
