@@ -28,13 +28,20 @@ public class hash_ramen_rgp {
         //444210879360890,805
         //time_compare_bench();
         
-        System.out.println("basecomp: 444210879360890,805");
-        int numCampo=4;
-        HashRamen BBDD = new HashRamen(11,120,",");
-        loadFile(BBDD,"Prueba.txt");
-        System.out.println("Promedio: "+BBDD.promedio(numCampo));
-        System.out.println("min: "+BBDD.min(numCampo));
+        //50041.59
         
+        //System.out.println("basecomp: 444210879360890,805");
+        int numCampo=4;
+        HashRamen BBDD = new HashRamen(17,120,";");
+        //loadFile(BBDD,"Prueba.txt");
+        loadFile(BBDD,"archivo.txt");
+        //System.out.println("Promedio: "+BBDD.promedio(numCampo));
+        //System.out.println("min: "+BBDD.min(numCampo));
+        
+        //System.out.println("moda: "+BBDD.moda(7));
+        //System.out.println("maximo clave: "+BBDD.max(0));
+        //System.out.println("maximo campo j=8: "+BBDD.max(7));
+        System.out.println("promedio campo 5: "+BBDD.promedio(4));
     }
     
     public static void time_compare_bench()
@@ -118,13 +125,16 @@ public class hash_ramen_rgp {
     
     public static void loadFile(HashRamen ramen,String file)
     {
+        int cont = 0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String ln;
             while ((ln=br.readLine())!=null) 
             {
+                cont++;
                 ramen.insert(ln);
             }
+            System.out.println("numero de registros: "+cont);
             br.close();
         } catch (java.io.IOException e) {
             System.out.println("error de carga del archivo: "+file);

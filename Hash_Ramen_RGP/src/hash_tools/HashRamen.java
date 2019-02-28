@@ -6,7 +6,9 @@
 package hash_tools;
 
 import hash_tools.TablaHash;
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.MathContext;
 import java.util.Collections;
 
 /**
@@ -125,16 +127,16 @@ public class HashRamen {
         return new BigInteger(lista_campo.get(lista_campo.size()-1));
     }
     
-    public double promedio(int campo)
+    public BigDecimal promedio(int campo)
     {
-        BigInteger sum = BigInteger.ZERO;
+        BigDecimal sum = BigDecimal.ZERO;
         java.util.ArrayList<String> lista_campo = listaOrdenCampo(campo);
         //System.out.println(lista_campo);
         for (String string : lista_campo) {
-            sum = sum.add(new BigInteger(string));
+            sum = sum.add(new BigDecimal(string+".0"));
         }
         //return sum.divideAndRemainder(new BigInteger(String.valueOf(lista_campo.size())));
-        return sum.floatValue()/lista_campo.size();
+        return sum.divide(new BigDecimal(String.valueOf(lista_campo.size())+".0"),MathContext.DECIMAL128);
     }
     
     public int moda(int campo) throws NumberFormatException
