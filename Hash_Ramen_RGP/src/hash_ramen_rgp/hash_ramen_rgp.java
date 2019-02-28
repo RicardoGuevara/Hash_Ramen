@@ -24,23 +24,18 @@ public class hash_ramen_rgp {
         //test_table_structure();
         //test_ramen_structure();
         //test_file_generator();
-        
-        //444210879360890,805
         //time_compare_bench();
         
+        //444210879360890,805
         //50041.59
         
-        //System.out.println("basecomp: 444210879360890,805");
-        int numCampo=4;
         HashRamen BBDD = new HashRamen(17,120,";");
         //loadFile(BBDD,"Prueba.txt");
         loadFile(BBDD,"archivo.txt");
-        //System.out.println("Promedio: "+BBDD.promedio(numCampo));
-        //System.out.println("min: "+BBDD.min(numCampo));
         
-        //System.out.println("moda: "+BBDD.moda(7));
-        //System.out.println("maximo clave: "+BBDD.max(0));
-        //System.out.println("maximo campo j=8: "+BBDD.max(7));
+        System.out.println("moda campo 8: "+BBDD.moda(7));
+        System.out.println("maximo campo clave: "+BBDD.max(0));
+        System.out.println("maximo campo j=8: "+BBDD.max(7));
         System.out.println("promedio campo 5: "+BBDD.promedio(4));
     }
     

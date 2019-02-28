@@ -156,6 +156,7 @@ public class HashRamen {
             if (temp>dif && temp!=1) 
             {
                 res=remobibles.get(0);
+                dif=temp;
             }
             remobibles = new java.util.ArrayList<>();
             ant_long = lista_campo.size();
