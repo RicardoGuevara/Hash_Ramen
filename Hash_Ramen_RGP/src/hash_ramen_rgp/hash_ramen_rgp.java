@@ -9,6 +9,7 @@ import gsi.FileGenerator;
 import hash_tools.HashRamen;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.math.BigInteger;
 
 /**
  *
@@ -24,12 +25,16 @@ public class hash_ramen_rgp {
         //test_ramen_structure();
         //test_file_generator();
         
-        /*
-        for (int i = 0; i < 300; i++)
-        System.out.println((char)i+" "+i);
-        */
+        //444210879360890,805
+        //time_compare_bench();
         
-        time_compare_bench();
+        System.out.println("basecomp: 444210879360890,805");
+        int numCampo=4;
+        HashRamen BBDD = new HashRamen(11,120,",");
+        loadFile(BBDD,"Prueba.txt");
+        System.out.println("Promedio: "+BBDD.promedio(numCampo));
+        System.out.println("min: "+BBDD.min(numCampo));
+        
     }
     
     public static void time_compare_bench()

@@ -6,6 +6,7 @@
 package hash_tools;
 
 import hash_tools.TablaHash;
+import java.math.BigInteger;
 import java.util.Collections;
 
 /**
@@ -112,26 +113,28 @@ public class HashRamen {
         
     }
     
-    public int min(int campo)
+    public BigInteger min(int campo)
     {
         java.util.ArrayList<String> lista_campo = listaOrdenCampo(campo);
-        return Integer.parseInt(lista_campo.get(0));
+        return new BigInteger(lista_campo.get(0));
     }
     
-    public int max(int campo)
+    public BigInteger max(int campo)
     {
         java.util.ArrayList<String> lista_campo = listaOrdenCampo(campo);
-        return Integer.parseInt(lista_campo.get(lista_campo.size()-1));
+        return new BigInteger(lista_campo.get(lista_campo.size()-1));
     }
     
-    public int promedio(int campo)
+    public double promedio(int campo)
     {
-        int sum = 0;
+        BigInteger sum = BigInteger.ZERO;
         java.util.ArrayList<String> lista_campo = listaOrdenCampo(campo);
+        //System.out.println(lista_campo);
         for (String string : lista_campo) {
-            sum+= Integer.parseInt(string);
+            sum = sum.add(new BigInteger(string));
         }
-        return sum/lista_campo.size();
+        //return sum.divideAndRemainder(new BigInteger(String.valueOf(lista_campo.size())));
+        return sum.floatValue()/lista_campo.size();
     }
     
     public int moda(int campo) throws NumberFormatException
